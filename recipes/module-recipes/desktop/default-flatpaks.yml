@@ -49,7 +49,6 @@ modules:
           name: flathub-user
           url: https://dl.flathub.org/repo/flathub.flatpakrepo
         install:
-          # General/system stuff
           - app.zen_browser.zen
           - org.upscayl.Upscayl
           - fr.handbrake.ghb
@@ -63,7 +62,6 @@ modules:
           - org.fkoehler.KTailctl
           - com.bitwarden.desktop
 
-          # Dev stuff
           # "Inspired" by https://github.com/ublue-os/aurora/blob/main/flatpaks/system-flatpaks.list
           - dev.zed.Zed
           - io.podman_desktop.PodmanDesktop
@@ -72,7 +70,6 @@ modules:
           - sh.loft.devpod
           - org.virt_manager.virt-manager
 
-          # Gaming stuff
           - com.valvesoftware.Steam
           - net.lutris.Lutris
           - io.github.Foldex.AdwSteamGtk

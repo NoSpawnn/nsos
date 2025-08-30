@@ -2,20 +2,28 @@
 
 set -euo pipefail
 
+TEMP=$(mktemp -d)
+
 echo "Downloading ublue packages config"
-curl -fLs --create-dirs https://github.com/ublue-os/packages/archive/refs/heads/main.zip -o /tmp/ublue-config/packages.zip
-unzip -q /tmp/ublue-config/packages.zip -d /tmp/ublue-config/
+curl -fLs --create-dirs https://github.com/ublue-os/packages/archive/refs/heads/main.zip -o $TEMP/packages.zip
+unzip -q $TEMP/packages.zip -d $TEMP/
 
 echo "Copying ublue udev rules"
-cp /tmp/ublue-config/packages-main/packages/ublue-os-udev-rules/src/udev-rules.d/*.rules /usr/lib/udev/rules.d/
+cp $TEMP/packages-main/packages/ublue-os-udev-rules/src/udev-rules.d/*.rules /usr/lib/udev/rules.d/
 
-echo "Copying ublue flatpak and rpm-ostree updater"
-cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
-cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
-cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/user/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
-cp /tmp/ublue-config/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/user/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
+echo "Copying ublue flatpak updater"
+cp $TEMP/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/system/flatpak-system-update.timer /usr/lib/systemd/system/flatpak-system-update.timer
+cp $TEMP/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/system/flatpak-system-update.service /usr/lib/systemd/system/flatpak-system-update.service
+cp $TEMP/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/user/flatpak-user-update.timer /usr/lib/systemd/user/flatpak-user-update.timer
+cp $TEMP/packages-main/packages/ublue-os-update-services/src/usr/lib/systemd/user/flatpak-user-update.service /usr/lib/systemd/user/flatpak-user-update.service
 echo "Enabling systemd timers for flatpak updaters"
 systemctl --system enable flatpak-system-update.timer
 systemctl --global enable flatpak-user-update.timer
 
-rm -r /tmp/ublue-config/
+echo "Copying ublue LUKS scripts"
+cp $TEMP/packages-main/packages/ublue-os-luks/src/luks-enable-tpm2-autounlock /usr/libexec/luks-enable-tpm2-autounlock
+cp $TEMP/packages-main/packages/ublue-os-luks/src/luks-disable-tpm2-autounlock /usr/libexec/luks-disable-tpm2-autounlock
+# chmod 755 /usr/libexec/luks-enable-tpm2-autounlock
+# chmod 755 /usr/libexec/luks-disable-tpm2-autounlock
+
+rm -r $TEMP

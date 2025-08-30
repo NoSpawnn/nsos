@@ -1,0 +1,9 @@
+modules:
+  - type: dnf
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks
+        - fedora-third-party
+        - fedora-flathub-remote
+        - fedora-workstation-repositories

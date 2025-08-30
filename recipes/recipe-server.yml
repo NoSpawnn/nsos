@@ -13,9 +13,14 @@ image-version: stable
 modules:
   - from-file: base.yml
 
-  - type: rpm-ostree
+  - type: dnf
     install:
-      - incus
+      packages:
+        - incus
+
+  # - type: script
+  #   snippets:
+  #     - ln -s /usr/bin/incus /usr/bin/lxd
 
   - type: os-release
     properties:

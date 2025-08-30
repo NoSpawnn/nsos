@@ -4,7 +4,7 @@
 # image will be published to ghcr.io/<user>/<name>
 name: nsos-desktop
 # description will be included in the image's metadata
-description: "NSOS Custom Desktop Image (GNOME)"
+description: "NSOS Custom Desktop Image"
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: quay.io/fedora-ostree-desktops/kinoite
@@ -12,30 +12,21 @@ image-version: 42
 
 modules:
   - from-file: base.yml
-  - from-file: module-recipes/default-flatpaks.yml
-  # - from-file: module-recipes/gnome-extensions.yml
+  - from-file: module-recipes/desktop/default-flatpaks.yml
+  - from-file: module-recipes/desktop/dnf.yml
+  # - from-file: module-recipes/desktop/gnome-extensions.yml
 
-  - type: dnf
-    install:
-      packages:
-        - solaar-udev
-        - lm_sensors
-    remove:
-      packages:
-        - firefox
-
-  # Covering ublue-os/main here
-  # Add negativo repo and replace some packages like HEIF & mesa
+  # Stealing a bunch of stuff from uBlue - https://github.com/ublue-os/main/blob/main/build_files/install.sh
   - type: dnf
     repos:
       nonfree: negativo17
-    # Replace Fedora packages with Negativos (Mesa & HEIF)  
     install:
       packages:
-        - libopenjph # Manually install dependency for `libheif`, as Negativo upstreamed it
+        - libopenjph
         - repo: fedora-multimedia
           packages:
             - libheif
+            - mesa-vdpau-drivers
     replace:
       - from-repo: fedora-multimedia
         packages:
@@ -44,22 +35,50 @@ modules:
           - mesa-filesystem
           - mesa-libEGL
           - mesa-libGL
+          - mesa-libGLU
           - mesa-libgbm
           - mesa-va-drivers
           - mesa-vulkan-drivers
+      # https://github.com/ublue-os/main/pull/692
+      - from-repo: fedora
+        packages:
+          - old: OpenCL-ICD-Loader
+            new: ocl-icd
+
+  - type: dnf
+    install:
+      packages:
+        - solaar-udev
+        - lm_sensors
+        - repo: fedora-multimedia
+          packages:
+            - libva-utils
+            - heif-pixbuf-loader
+            - pipewire-libs-extra
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - old: ffmpeg-free
+            new: ffmpeg
+            allow-erasing: true
+          - old: libfdk-aac-free
+            new: libfdk-aac
+          - old: libavcodec-free
+            new: libavcodec
 
   - type: script
     scripts:
-      - udev/android.sh
-      - udev/fancontrol.sh
       - ublue.sh
       - initramfs-zstd.sh
+      - udev/android.sh
+      - udev/game-devices.sh
+      - udev/fancontrol.sh
 
   - type: os-release
     properties:
       ID: nsos-desktop
       ID_LIKE: fedora
       NAME: NS-OS
-      PRETTY_NAME: NS-OS Desktop GNOME
+      PRETTY_NAME: NS-OS Desktop
 
   - type: signing
