@@ -18,7 +18,7 @@ modules:
         - openssl
         - just
         - git # Just making sure :3
-  
+
   - type: script
     snippets:
       - mkdir -p /usr/share/ublue-os/just
@@ -30,8 +30,8 @@ modules:
   - type: systemd
     system:
       enabled:
-      - sshd
-      - tailscaled
+        - sshd
+        - tailscaled
 
   - type: justfiles
     validate: true

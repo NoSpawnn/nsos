@@ -2,8 +2,8 @@ modules:
   - type: dnf
     install:
       packages:
-          - solaar-udev
-          - lm_sensors
+        - solaar-udev
+        - lm_sensors
     remove:
       packages:
         - firefox
