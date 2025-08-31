@@ -23,7 +23,5 @@ systemctl --global enable flatpak-user-update.timer
 echo "Copying ublue LUKS scripts"
 cp $TEMP/packages-main/packages/ublue-os-luks/src/luks-enable-tpm2-autounlock /usr/libexec/luks-enable-tpm2-autounlock
 cp $TEMP/packages-main/packages/ublue-os-luks/src/luks-disable-tpm2-autounlock /usr/libexec/luks-disable-tpm2-autounlock
-# chmod 755 /usr/libexec/luks-enable-tpm2-autounlock
-# chmod 755 /usr/libexec/luks-disable-tpm2-autounlock
 
 rm -r $TEMP
