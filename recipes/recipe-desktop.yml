@@ -14,6 +14,7 @@ modules:
   - from-file: base.yml
   - from-file: module-recipes/desktop/default-flatpaks.yml
   - from-file: module-recipes/desktop/dnf.yml
+  - from-file: module-recipes/desktop/systemd.yml
   # - from-file: module-recipes/desktop/gnome-extensions.yml
 
   # Stealing a bunch of stuff from uBlue - https://github.com/ublue-os/main/blob/main/build_files/install.sh
@@ -48,8 +49,6 @@ modules:
   - type: dnf
     install:
       packages:
-        - solaar-udev
-        - lm_sensors
         - repo: fedora-multimedia
           packages:
             - libva-utils
@@ -69,10 +68,10 @@ modules:
   - type: script
     scripts:
       - ublue.sh
-      - initramfs-zstd.sh
       - udev/android.sh
       - udev/game-devices.sh
       - udev/fancontrol.sh
+      # - install/orcaslicer-flatpak.sh
 
   - type: os-release
     properties:
