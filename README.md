@@ -5,3 +5,10 @@
     - [blue-build/cli](https://github.com/blue-build/cli)
     - [recipe.yml reference](https://blue-build.org/reference/recipe/)
 - Thanks to [wz790/Fedora-Noble-Setup: Fedora Linux Noble Setup Guide (Post-Installation)](https://github.com/wz790/Fedora-Noble-Setup) for some package stuff
+
+## TODOs
+
+- Automate [Vesktop Rich Presence](https://github.com/flathub/dev.vencord.Vesktop?tab=readme-ov-file#discord-rich-presence) somehow
+- [chezmoi](https://blue-build.org/reference/modules/chezmoi/) dotfiles management
+- [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer) as a default flatpak (not on flathub yet)
+- Secure boot (keys)
