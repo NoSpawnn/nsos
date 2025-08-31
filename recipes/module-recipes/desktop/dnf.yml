@@ -11,3 +11,4 @@ modules:
         - fedora-third-party
         - fedora-flathub-remote
         - fedora-workstation-repositories
+        - brltty
