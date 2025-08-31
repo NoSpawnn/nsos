@@ -36,6 +36,8 @@ modules:
           - org.kde.kweather
           - org.kde.kclock
           - org.kde.haruna
+          - org.kde.filelight
+          - org.kde.ark
           - org.gtk.Gtk3theme.Breeze
 
           - com.github.tchx84.Flatseal
