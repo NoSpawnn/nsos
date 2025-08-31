@@ -1,0 +1,6 @@
+modules:
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - 0xProto
+        - JetBrainsMono

@@ -15,6 +15,7 @@ modules:
   - from-file: module-recipes/desktop/default-flatpaks.yml
   - from-file: module-recipes/desktop/dnf.yml
   - from-file: module-recipes/desktop/systemd.yml
+  - from-file: module-recipes/desktop/fonts.yml
   # - from-file: module-recipes/desktop/gnome-extensions.yml
 
   # Stealing a bunch of stuff from uBlue - https://github.com/ublue-os/main/blob/main/build_files/install.sh
