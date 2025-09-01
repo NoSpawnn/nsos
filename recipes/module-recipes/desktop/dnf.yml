@@ -8,7 +8,14 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
-        - fedora-third-party
         - fedora-flathub-remote
         - fedora-workstation-repositories
         - brltty
+
+  - type: dnf
+    install:
+      install-weak-deps: false
+      packages:
+        - plasma-discover
+        - plasma-discover-flatpak
+        - plasma-discover-rpm-ostree
