@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
-alias ls="eza"
-alias ll="eza -al"
-alias l.="eza -d .*"
+alias ls="eza 2>/dev/null"
+alias ll="eza -al 2>/dev/null"
+alias l.="eza -d .* 2>/dev/null"
