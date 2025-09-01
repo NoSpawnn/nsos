@@ -26,7 +26,7 @@ ignite type="desktop": # Badass right?
     --pretty --strict --files-dir . ignition.yml > {{ OUT_DIR }}/ignition-{{ type }}.ign
 
 serve-ignition port="8080": (ignite)
-  podman run --rm -it --name ignition-server -p {{ port }}:80 -v "./build":/usr/local/apache2/htdocs/ httpd:2.4
+  podman run --rm -it --name ignition-server -p {{ port }}:80 -v ./build:/usr/local/apache2/htdocs:Z httpd:2.4
 
 vm disk_size="128G":
   mkdir -p {{ OUT_DIR }}/vm
