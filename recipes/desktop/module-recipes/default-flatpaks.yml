@@ -38,6 +38,7 @@ modules:
           - me.iepure.devtoolbox
           - sh.loft.devpod
           - org.virt_manager.virt-manager
+          - org.virt_manager.virt_manager.Extension.Qemu # Allows QEMU user sessions
 
           - com.valvesoftware.Steam
           - net.lutris.Lutris
