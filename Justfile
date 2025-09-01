@@ -1,12 +1,12 @@
 IGNITION_DIR := "./ignition"
 OUT_DIR := "./build"
 
-build: 
-  bluebuild build ./recipes/recipe-desktop.yml
+build:
+  bluebuild build -v ./recipes/recipe-desktop.yml -B podman -I podman
 
 build-desktop-iso:
   mkdir -p {{ OUT_DIR }}/iso
-  bluebuild generate-iso --iso-name nsos-desktop.iso -o {{ OUT_DIR }}/iso recipe recipes/recipe-desktop.yml
+  bluebuild generate-iso --iso-name nsos-desktop.iso -o {{ OUT_DIR }}/iso recipe recipes/recipe-desktop.yml -B podman -I podman
 
 download-coreos:
   mkdir -p {{ OUT_DIR }}/iso
