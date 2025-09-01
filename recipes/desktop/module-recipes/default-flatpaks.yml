@@ -7,39 +7,6 @@ modules:
           name: flathub
           url: https://dl.flathub.org/repo/flathub.flatpakrepo
         install:
-          # GNOME
-          # - org.gnome.Calculator
-          # - org.gnome.Calendar
-          # - org.gnome.Characters
-          # - org.gnome.Connections
-          # - org.gnome.Contacts
-          # - org.gnome.DejaDup
-          # - org.gnome.FileRoller
-          # - org.gnome.Firmware
-          # - org.gnome.Logs
-          # - org.gnome.Loupe
-          # - org.gnome.Maps
-          # - org.gnome.NautilusPreviewer
-          # - org.gnome.Papers
-          # - org.gnome.SimpleScan
-          # - org.gnome.TextEditor
-          # - org.gnome.baobab
-          # - org.gnome.clocks
-          # - org.gnome.font-viewer
-          # - io.github.flattool.Ignition
-
-          # KDE
-          - org.kde.kcalc
-          - org.kde.gwenview
-          - org.kde.kontact
-          - org.kde.okular
-          - org.kde.kweather
-          - org.kde.kclock
-          - org.kde.haruna
-          - org.kde.filelight
-          - org.kde.ark
-          - org.gtk.Gtk3theme.Breeze
-
           - com.github.tchx84.Flatseal
           - io.github.flattool.Warehouse
           - com.borgbase.Vorta

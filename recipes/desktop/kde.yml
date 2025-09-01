@@ -1,0 +1,55 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+
+# image will be published to ghcr.io/<user>/<name>
+name: nsos-desktop-kde
+# description will be included in the image's metadata
+description: "NSOS Custom Desktop Image (KDE)"
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: quay.io/fedora-ostree-desktops/kinoite
+image-version: 42
+
+modules:
+  - from-file: base.yml
+  - from-file: desktop/shared.yml
+  - from-file: desktop/module-recipes/default-flatpaks.yml
+  - from-file: desktop/module-recipes/dnf.yml
+  - from-file: desktop/module-recipes/systemd.yml
+  - from-file: desktop/module-recipes/fonts.yml
+
+  - type: dnf
+    install:
+      install-weak-deps: false
+      packages:
+        - plasma-discover
+        - plasma-discover-flatpak
+        - plasma-discover-rpm-ostree
+
+  - type: default-flatpaks
+    configurations:
+      - scope: system
+        repo:
+          title: Flathub
+          name: flathub
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        install:
+          - org.kde.kcalc
+          - org.kde.gwenview
+          - org.kde.kontact
+          - org.kde.okular
+          - org.kde.kweather
+          - org.kde.kclock
+          - org.kde.haruna
+          - org.kde.filelight
+          - org.kde.ark
+          - org.gtk.Gtk3theme.Breeze
+
+  - type: os-release
+    properties:
+      ID: nsos-desktop-kde
+      ID_LIKE: fedora
+      NAME: NS-OS
+      PRETTY_NAME: NS-OS Desktop (KDE)
+
+  - type: signing

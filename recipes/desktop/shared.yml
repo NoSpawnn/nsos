@@ -1,23 +1,4 @@
----
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-
-# image will be published to ghcr.io/<user>/<name>
-name: nsos-desktop
-# description will be included in the image's metadata
-description: "NSOS Custom Desktop Image"
-
-# the base image to build on top of (FROM) and the version tag to use
-base-image: quay.io/fedora-ostree-desktops/kinoite
-image-version: 42
-
 modules:
-  - from-file: base.yml
-  - from-file: module-recipes/desktop/default-flatpaks.yml
-  - from-file: module-recipes/desktop/dnf.yml
-  - from-file: module-recipes/desktop/systemd.yml
-  - from-file: module-recipes/desktop/fonts.yml
-  # - from-file: module-recipes/desktop/gnome-extensions.yml
-
   # Stealing a bunch of stuff from uBlue - https://github.com/ublue-os/main/blob/main/build_files/install.sh
   - type: dnf
     repos:
@@ -73,12 +54,3 @@ modules:
       - udev/game-devices.sh
       - udev/fancontrol.sh
       # - install/orcaslicer-flatpak.sh
-
-  - type: os-release
-    properties:
-      ID: nsos-desktop
-      ID_LIKE: fedora
-      NAME: NS-OS
-      PRETTY_NAME: NS-OS Desktop
-
-  - type: signing

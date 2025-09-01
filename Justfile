@@ -1,8 +1,8 @@
 IGNITION_DIR := "./ignition"
 OUT_DIR := "./build"
 
-build:
-  bluebuild build -v ./recipes/recipe-desktop.yml -B podman -I podman
+build spin="kde":
+  bluebuild build -v ./recipes/desktop/{{ spin }}.yml -B podman -I podman
 
 run: (build)
   podman run -it --rm localhost/nsos-desktop:latest
