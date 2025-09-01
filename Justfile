@@ -4,6 +4,9 @@ OUT_DIR := "./build"
 build:
   bluebuild build -v ./recipes/recipe-desktop.yml -B podman -I podman
 
+run: (build)
+  podman run -it --rm localhost/nsos-desktop:latest
+
 build-desktop-iso:
   mkdir -p {{ OUT_DIR }}/iso
   bluebuild generate-iso --iso-name nsos-desktop.iso -o {{ OUT_DIR }}/iso recipe recipes/recipe-desktop.yml -B podman -I podman
