@@ -30,6 +30,7 @@ modules:
           - io.github.pwr_solaar.solaar
           - org.fkoehler.KTailctl
           - com.bitwarden.desktop
+          - org.signal.Signal
 
           # "Inspired" by https://github.com/ublue-os/aurora/blob/main/flatpaks/system-flatpaks.list
           - dev.zed.Zed
