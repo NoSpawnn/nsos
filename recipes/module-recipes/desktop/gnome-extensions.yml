@@ -1,6 +1,7 @@
 modules:
   - type: gnome-extensions
     install:
+      - Dash to Panel
       - Blur my Shell
       - GSConnect
       - Quick Close in Overview
