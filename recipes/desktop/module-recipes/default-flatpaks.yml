@@ -48,3 +48,4 @@ modules:
           - chat.revolt.RevoltDesktop
           - net.davidotek.pupgui2
           - com.obsproject.Studio
+          - com.github.Matoking.protontricks
