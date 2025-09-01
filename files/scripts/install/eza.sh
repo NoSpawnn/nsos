@@ -5,11 +5,10 @@
 
 set -euo pipefail
 
-TMP=$(mktemp -d)
+TEMP=$(mktemp -d)
 
-cd $TMP
-wget https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O eza.tar.gz
-tar xvf eza.tar.gz
-mv eza /usr/bin/eza
+curl -fLs https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -o $TEMP/eza.tar.gz
+tar xvf $TEMP/eza.tar.gz --directory $TEMP
+mv $TEMP/eza /usr/bin/eza
 
-rm -r $TMP
+rm -r $TEMP
