@@ -19,11 +19,11 @@ download-coreos:
 validate:
   bluebuild validate recipes/recipe-desktop.yml
 
-ignite type="desktop": # Badass right?
+ignite: # Badass right?
   mkdir -p {{ OUT_DIR }}
   podman run --interactive --rm --security-opt label=disable \
     --volume "{{ IGNITION_DIR }}:/pwd" --workdir /pwd quay.io/coreos/butane:release \
-    --pretty --strict --files-dir . ignition.yml > {{ OUT_DIR }}/ignition-{{ type }}.ign
+    --pretty --strict --files-dir . ignition.yml > {{ OUT_DIR }}/ignition.ign
 
 serve-ignition port="8080": (ignite)
   podman run --rm -it --name ignition-server -p {{ port }}:80 -v ./build:/usr/local/apache2/htdocs:Z httpd:2.4
