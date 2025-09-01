@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # As of Fedora 42, eza isn't in DNF repos, so install it manually
+# `ls` gets aliased to `eza`, see files/system/etc/profile.d/zz-aliases.sh
 
 set -euo pipefail
 
