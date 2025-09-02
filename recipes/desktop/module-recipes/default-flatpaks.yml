@@ -37,7 +37,6 @@ modules:
           - io.github.getnf.embellish
           - me.iepure.devtoolbox
           - sh.loft.devpod
-          - org.virt_manager.virt-manager
 
           - com.valvesoftware.Steam
           - net.lutris.Lutris
