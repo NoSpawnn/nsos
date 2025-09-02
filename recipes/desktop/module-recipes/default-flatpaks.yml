@@ -38,10 +38,10 @@ modules:
           - me.iepure.devtoolbox
           - sh.loft.devpod
 
-          - com.valvesoftware.Steam
-          - net.lutris.Lutris
-          - io.github.Foldex.AdwSteamGtk
+          # - com.valvesoftware.Steam
+          # - net.lutris.Lutris
+          # - io.github.Foldex.AdwSteamGtk
           - dev.vencord.Vesktop
           - chat.revolt.RevoltDesktop
-          - net.davidotek.pupgui2
+          # - net.davidotek.pupgui2
           - com.obsproject.Studio
