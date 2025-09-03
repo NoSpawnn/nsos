@@ -26,6 +26,7 @@ modules:
       - chmod 755 /usr/bin/ugum # Make ugum executable by all
     scripts:
       - install/eza.sh
+      - install/incus.sh
 
   - type: systemd
     system:

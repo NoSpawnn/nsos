@@ -16,8 +16,11 @@ download-coreos:
   podman run --security-opt label=disable --pull=always --rm -v ./build/iso:/data -w /data \
     quay.io/coreos/coreos-installer:release download -s stable -p metal -f iso
 
-validate:
-  bluebuild validate recipes/recipe-desktop.yml
+validate-recipe recipe="":
+  bluebuild validate {{ recipe }}
+
+validate-justfile file="":
+    just --fmt --check --unstable --justfile {{ file }}
 
 ignite: # Badass right?
   mkdir -p {{ OUT_DIR }}

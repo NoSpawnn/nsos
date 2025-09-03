@@ -13,14 +13,14 @@ image-version: stable
 modules:
   - from-file: base.yml
 
-  - type: dnf
-    install:
-      packages:
-        - incus
+  # - type: dnf
+  #   install:
+  #     packages:
+  #       - incus
 
-  # - type: script
-  #   snippets:
-  #     - ln -s /usr/bin/incus /usr/bin/lxd
+  - type: script
+    snippets:
+      - ln -s /usr/bin/incus /usr/bin/lxd
 
   - type: os-release
     properties:

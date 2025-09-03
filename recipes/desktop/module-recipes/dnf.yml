@@ -4,9 +4,10 @@ modules:
       packages:
         - solaar-udev
         - lm_sensors
-        - libvirt-daemon-kvm
+        # - libvirt-daemon-kvm
+        # - virt-install
+        # - incus
         - qemu-kvm
-        - virt-install
     remove:
       packages:
         - firefox
