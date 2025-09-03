@@ -2,7 +2,11 @@ IGNITION_DIR := "./ignition"
 OUT_DIR := "./build"
 
 build-desktop spin="kde":
-  bluebuild build -v ./recipes/desktop/{{ spin }}.yml -B podman -I podman
+  #!/usr/bin/env bash
+  set -euxo pipefail
+  RECIPE=recipes/desktop/{{ spin }}.yml
+  just validate-recipe $RECIPE
+  bluebuild build -v $RECIPE -B podman -I podman
 
 build-server:
   bluebuild build -v ./recipes/server/recipe.yml -B podman -I podman
